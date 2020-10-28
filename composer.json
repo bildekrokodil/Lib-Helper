@@ -1,0 +1,17 @@
+{
+    "name": "cloudonaut/helper",
+    "description": "Simple reusable helper functions",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roel Van der planken",
+            "email": "roel@drinksomecoffee.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {"Cloudonaut\\Lib\\": "src/"}
+    },
+    "require": {}
+}
