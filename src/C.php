@@ -37,4 +37,32 @@ class C
             return $miles;
         }
     }
+    /* long lat Degree Minute second to Decimal */
+    public static function convertLatLongDMSToDecimal($value)
+    {
+        $value = $value ?? "";
+        $value = str_replace(" ", "", $value);
+        $value = str_replace("N", "", $value);
+        $value = str_replace("E", "", $value);
+
+        $degree = 0;
+        $minute = 0;
+        $second = 0;
+        if (strpos($value, "°") !== false) {
+            $degreePieces = explode("°", $value);
+            $degree = $degreePieces[0];
+            if (strpos($value, "'") !== false) {
+                $minutePiece = explode("'", $degreePieces[1]);
+                $minute = $minutePiece[0];
+                if (strpos($value, '"') !== false) {
+                    $second = str_replace('"', '', $minutePiece[1]);
+                }
+            }
+        }
+        if ($degree == 0 && $minute == 0 && $second == 0) {
+            //maybe it is already decimal
+            return $value;
+        }
+        return $degree + ($minute / 60) + ($second / 3600);
+    }
 }
